@@ -38,7 +38,7 @@ const Navbar = () => {
           onClick={() => setActive(link.title)}
         >
 
-            <a href = {'#${link.id}'}> {link.title}</a>
+            <a href = {`#${link.id}`}> {link.title}</a>
 
           </li>
         ))}
@@ -56,18 +56,19 @@ const Navbar = () => {
               !toggle ? "hidden" : "flex"
             } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}>
               
-              <ul className='list-none flex justify-end items-start flex-col gap-4'>
-              {navLinks.map((link) => (
+              <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
+              {navLinks.map((nav) => (
                 <li
-                key={link.id}
-                className={`${
-                  active === link.title ? "text-white" : "text-secondary"
-                } font-poppins font-medium cursor-pointer text-[16px]`}
-                onClick={() => {setToggle(!toggle); setActive(link.title);}}
-              >
-
-                  <a href = {'#${link.id}'}> {link.title}</a>
-
+                  key={nav.id}
+                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
+                    active === nav.title ? "text-white" : "text-secondary"
+                  }`}
+                  onClick={() => {
+                    setToggle(!toggle);
+                    setActive(nav.title);
+                  }}
+                >
+                  <a href={`#${nav.id}`}>{nav.title}</a>
                 </li>
               ))}
             </ul>
